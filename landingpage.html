@@ -7,7 +7,47 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <div class="container">
+        <div class="only"> 
+            <h1 class ="headings">Get your exact coordinates!</h1>
+            <button type="button" class="btn btn-info" onclick="getLocation()">Get</button>
+            <p id="demo"></p>
+        </div>
+    </div>
+    <script>
+        var x = document.getElementById("demo");
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else { 
+            x.innerHTML = "Geolocation is not supported by this browser.";
+          }
+        }
+        
+        function showPosition(position) {
+          x.innerHTML = "Latitude: " + position.coords.latitude + 
+          "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
+    <style>
+        .only {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .only {
+            text-align: center;
+        }
+        .container {
+        height: 200px;
+        position: relative;
+        border: 3px solid green;
+        }
+         
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   </body>
 </html>
